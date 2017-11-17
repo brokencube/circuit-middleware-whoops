@@ -23,24 +23,7 @@ class Whoops implements Middleware
     
     public function handle($error, Request $request) : Response
     {
-        $method = Run::EXCEPTION_HANDLER;
-        $whoops = $this->getWhoopsInstance($request);
-        // Output is managed by the middleware pipeline
-        $whoops->allowQuit(false);
-        
-        ob_start();
-        $whoops->$method($error);
-        $response = ob_get_clean();
-        return new Response($response, 500);
-    }
-    
-    private function getWhoopsInstance(Request $request)
-    {
         $whoops = new Run();
-        if (php_sapi_name() === 'cli') {
-            $whoops->pushHandler(new PlainTextHandler);
-            return $whoops;
-        }
         
         if (in_array('application/json', $request->getAcceptableContentTypes())) {
             $handler = new JsonResponseHandler;
@@ -50,6 +33,11 @@ class Whoops implements Middleware
         }
         
         $whoops->pushHandler($handler);
-        return $whoops;
+        $whoops->allowQuit(false);
+        
+        ob_start();
+        $whoops->{Run::EXCEPTION_HANDLER}($error);
+        $response = ob_get_clean();
+        return new Response($response, 500);
     }
 }
