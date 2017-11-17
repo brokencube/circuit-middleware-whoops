@@ -10,7 +10,7 @@ use Whoops\Handler\JsonResponseHandler;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
-class Whoops extends Middleware
+class Whoops implements Middleware
 {
     public function process(Request $request, Delegate $delegate) : Response
     {
