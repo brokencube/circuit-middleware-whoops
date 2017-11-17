@@ -1,0 +1,22 @@
+{
+    "name": "brokencube/circuit-middleware-whoops",
+    "description": "Whoops Middleware for Circuit",
+    "type": "library",
+    "keywords": ["Whoops", "Whoops-Error-Handler", "Middleware"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nik Barham",
+            "email": "github@brokencube.co.uk",
+            "role": "Lead Developer"
+        }    
+    ],
+    "require": {
+        "php": ">=7.0",
+	"brokencube\circuit": "^1.2",
+	"filp/whoops" : "2.*"
+    },
+    "autoload": {    
+        "psr-4": { "CircuitMiddleware\\Whoops\\": "src/" }
+    }
+}
