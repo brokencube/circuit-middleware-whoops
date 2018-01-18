@@ -18,5 +18,7 @@
     },
     "autoload": {    
         "psr-4": { "CircuitMiddleware\\Whoops\\": "src/" }
-    }
+    },
+    "minimum-stability" : "dev",
+    "prefer-stable" : true
 }
