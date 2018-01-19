@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=7.0",
-	"brokencube/circuit": "^1.2",
+	"brokencube/circuit": "^1.2 || ^2.0",
 	"filp/whoops" : "2.*"
     },
     "autoload": {    
